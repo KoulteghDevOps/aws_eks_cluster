@@ -1,6 +1,6 @@
 terraform {
   backend "local" {
-    path = "/opt/eks-cluster.tfstate"
+    path = "/tmp/eks-cluster.tfstate"
   }
 }
 
