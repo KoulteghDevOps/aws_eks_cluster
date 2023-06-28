@@ -92,13 +92,62 @@ EOF
 # Attach IAM policies to IAM roles
 resource "aws_iam_role_policy_attachment" "eks_cluster_role_policy_attachment_1" {
   role       = aws_iam_role.eks_cluster_role_1.name
-  policy_arn = aws_iam_policy.eks_cluster_policy_1.arn
+#  policy_arn = aws_iam_policy.eks_cluster_policy_1.arn
+  policy_arn  = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
 
 resource "aws_iam_role_policy_attachment" "eks_cluster_role_policy_attachment_2" {
   role       = aws_iam_role.eks_cluster_role_2.name
-  policy_arn = aws_iam_policy.eks_cluster_policy_2.arn
+#  policy_arn = aws_iam_policy.eks_cluster_policy_2.arn
+  policy_arn  = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
+#
+#resource "aws_iam_role" "eks_cluster_role_1" {
+#  name = "eks-cluster-role-1"
+#  assume_role_policy = <<EOF
+#{
+#  "Version": "2012-10-17",
+#  "Statement": [
+#    {
+#      "Effect": "Allow",
+#      "Principal": {
+#        "Service": "eks.amazonaws.com"
+#      },
+#      "Action": "sts:AssumeRole"
+#    }
+#  ]
+#}
+#EOF
+#}
+#
+#resource "aws_iam_role_policy_attachment" "eks_cluster_role_policy_attachment_1" {
+#  role       = aws_iam_role.eks_cluster_role_1.name
+#  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"  # Add this line
+#}
+#
+#resource "aws_iam_role" "eks_cluster_role_2" {
+#  name = "eks-cluster-role-2"
+#  assume_role_policy = <<EOF
+#{
+#  "Version": "2012-10-17",
+#  "Statement": [
+#    {
+#      "Effect": "Allow",
+#      "Principal": {
+#        "Service": "eks.amazonaws.com"
+#      },
+#      "Action": "sts:AssumeRole"
+#    }
+#  ]
+#}
+#EOF
+#}
+#
+#resource "aws_iam_role_policy_attachment" "eks_cluster_role_policy_attachment_2" {
+#  role       = aws_iam_role.eks_cluster_role_2.name
+#  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"  # Add this line
+#}
+
 
 # Create the first EKS cluster
 resource "aws_eks_cluster" "eks_cluster_1" {
